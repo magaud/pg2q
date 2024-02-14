@@ -1,0 +1,19 @@
+-Q . PG2X
+
+projective_plane_axioms.v
+pg22.v
+pg23.v
+pg24.v
+pg25.v
+pg27.v
+pg28.v
+pg29.v
+pg211.v
+pg213.v
+pg217.v
+pg219.v
+pg223.v
+
+hall9.v
+dhall9.v
+hughes9.v		
