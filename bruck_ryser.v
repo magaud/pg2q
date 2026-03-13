@@ -18,13 +18,11 @@ Proof.
 Admitted.
 
 
-Lemma bruck_ryser' : forall n:nat,(Nat.modulo n 4 = 1 \/ Nat.modulo n 4 = 2) -> 
-(forall p q:nat, n != p * p + q * q) -> ~exists i:incid_struct, is_pp i /\ (forall H:(is_pp i), order i H=n).
+Lemma bruck_ryser' : forall n:nat, (order = n) -> (Nat.modulo n 4 = 1 \/ Nat.modulo n 4 = 2) -> 
+(forall p q:nat, n != p * p + q * q) -> False. (*~exists i:incid_struct, is_pp i /\ (forall H:(is_pp i), order i H=n).*)
 Proof.
-intros n Hmod Hsum.
-intro Hneg. 
-destruct Hneg as [i [Hi Ho]].
-destruct (bruck_ryser i n Hi Ho Hmod) as [p [q Hpq]].
+intros n Ho Hmod Hsum.
+destruct (bruck_ryser n Ho Hmod) as [p [q Hpq]].
 generalize (Hsum p q); clear Hsum; intros Hsum.
 rewrite <- Hpq in Hsum.
 by rewrite eqxx in Hsum.
@@ -61,10 +59,12 @@ intros; apply/eqP.
 apply foo_bar_6.
 Qed.
 
-Lemma no_plane_exists_when_n_is_6 : ~exists i:incid_struct, is_pp i /\ forall H:is_pp i, order i H = 6.
+Lemma no_plane_exists_when_n_is_6 : order = 6 -> False. (*~exists i:incid_struct, is_pp i /\ forall H:is_pp i, order i H = 6.*)
 Proof.
-apply bruck_ryser'.
-right; reflexivity.
+intros.
+apply bruck_ryser' with (n:=6).
+assumption.
+subst; right; reflexivity.
 apply foo_6.
 Qed.
 
@@ -110,10 +110,12 @@ intros; apply/eqP.
 apply foo_bar_14.
 Qed.
 
-Lemma no_plane_exists_when_n_is_14 :  ~exists i:incid_struct, is_pp i /\ forall H:is_pp i, order i H = 14.
+Lemma no_plane_exists_when_n_is_14 :  order = 14 -> False. (*~exists i:incid_struct, is_pp i /\ forall H:is_pp i, order i H = 14.*)
 Proof.
-apply bruck_ryser'.
-right; reflexivity.
+intros.
+apply bruck_ryser' with (n:=14).
+assumption.
+subst; right; reflexivity.
 apply foo_14.
 Qed.
 
