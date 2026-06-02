@@ -1,23 +1,32 @@
+[package]
+name = "pg2q"
+version = "0.1"
+
+[dependencies]
+coqtail-math = {path = "coqtail-math" }
+
 -Q . PG2X
+-Q coqtail-math Coqtail
 
 projective_plane_axioms_alt.v
 order.v
 incid_mats.v
+lemmas.v
 bruck_ryser.v
 projective_plane_axioms.v
 pg22.v
 pg23.v
 pg24.v
-pg25.v
-pg27.v
-pg28.v
-pg29.v
-pg211.v
-pg213.v
-pg217.v
-pg219.v
-pg223.v
+#pg25.v
+#pg27.v
+#pg28.v
+#pg29.v
+#pg211.v
+#pg213.v
+#pg217.v
+#pg219.v
+#pg223.v
 
-hall9.v
-dhall9.v
-hughes9.v		
+#hall9.v
+#dhall9.v
+#hughes9.v		

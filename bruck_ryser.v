@@ -1,6 +1,8 @@
+From Coqtail Require Import Arith.Lagrange_four_square.
+
 From HB Require Import structures.
 From mathcomp Require Import all_ssreflect perm fingroup.
-From PG2X Require Import projective_plane_axioms_alt order incid_mats.
+From PG2X Require Import projective_plane_axioms_alt order incid_mats lemmas.
 From Stdlib Require Import Arith. 
 
 Section bruck_ryser.
@@ -124,3 +126,4 @@ Qed.
 (* 3.3.1 Bruck-Ryser rules out several other open cases *)
 (* orders not ruled out by 3.3.1 are 10, 12, 15, 18, 20, 24, 26, 28, 34, 35, 36, 39, 40, 44, 45, 48, 50, 51, 52, 55, 56, 58, 60, 63, 65, 68, 72, 74, 75, 76, 80, 82, 84, 85, 87, 88, 90, 91, 92, 95, 96, 98, 99 and 100 *)
 
+End bruck_ryser.
