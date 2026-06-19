@@ -119,7 +119,7 @@ Proof.
  intuition subst; reflexivity.
 Qed.
 
-Section s3_1_8.
+(*Section s3_1_8.*)
 
 Lemma l3_1_8 : forall a1 a2 b1 b2 :Z,
 (s a1 + s a2)*(s b1 + s b2) = s (a1*b1-a2*b2) + s (a1*b2+a2*b1).

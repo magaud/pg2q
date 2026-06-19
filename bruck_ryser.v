@@ -2,7 +2,7 @@ From Coqtail Require Import Arith.Lagrange_four_square.
 
 From HB Require Import structures.
 From mathcomp Require Import all_ssreflect perm fingroup.
-From PG2X Require Import projective_plane_axioms_alt order incid_mats lemmas.
+From PG2X Require Import projective_plane_axioms_alt order incid_mats lemmas rationals.
 From Stdlib Require Import Arith. 
 
 Section bruck_ryser.
@@ -14,20 +14,19 @@ Context
   {PP : ProjectivePlane point line incid}.
 
 Theorem bruck_ryser : 
-  forall (n:nat), ( order = n) -> Nat.modulo n 4 = 1 \/ Nat.modulo n 4 = 2 -> 
+  forall (n:nat), ( order = n) -> Nat.modulo n 4 = 1%nat \/ Nat.modulo n 4 = 2 -> 
 exists p:nat, exists q:nat, (n = p * p + q * q)%nat.
 Proof.
 Admitted.
 
 
-Lemma bruck_ryser' : forall n:nat, (order = n) -> (Nat.modulo n 4 = 1 \/ Nat.modulo n 4 = 2) -> 
+Lemma bruck_ryser' : forall n:nat, (order = n) -> (Nat.modulo n 4 = 1%nat \/ Nat.modulo n 4 = 2) -> 
 (forall p q:nat, n != p * p + q * q) -> False. (*~exists i:incid_struct, is_pp i /\ (forall H:(is_pp i), order i H=n).*)
 Proof.
 intros n Ho Hmod Hsum.
 destruct (bruck_ryser n Ho Hmod) as [p [q Hpq]].
 generalize (Hsum p q); clear Hsum; intros Hsum.
-rewrite <- Hpq in Hsum.
-by rewrite eqxx in Hsum.
+by rewrite Hpq eqxx in Hsum.
 Qed.
 
 Lemma foo_bar_6 : forall p q:nat, 6<> p * p + q * q.

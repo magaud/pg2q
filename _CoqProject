@@ -12,6 +12,7 @@ projective_plane_axioms_alt.v
 order.v
 incid_mats.v
 lemmas.v
+rationals.v
 bruck_ryser.v
 projective_plane_axioms.v
 pg22.v
