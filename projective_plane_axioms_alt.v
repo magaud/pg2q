@@ -1,5 +1,5 @@
 From HB Require Import structures.
-From mathcomp Require Import all_ssreflect perm fingroup.
+From mathcomp Require Import all_ssreflect fingroup.
 
 Class ProjectivePlane (point : finType) (line : finType) (incid : point -> line -> bool) :=
 {
