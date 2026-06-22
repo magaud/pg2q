@@ -22,7 +22,37 @@ Qed.
 
 Lemma mod4 : forall n:nat, Nat.modulo n 4 = 1 \/ Nat.modulo n 4 = 2 -> Nat.modulo (n*n+n+1) 4 = 3.
 Proof.
+intros n H.
+  assert (Hn : n = 4 * (n / 4) + n mod 4) by (apply Nat.div_mod; lia).
+  destruct H as [H1 | H2].
+  - rewrite H1 in Hn.
+    set (q := n / 4) in *.
+    replace (n*n+n+1) with (4*(4*q*q + 3*q) + 3) by nia.
+    replace (4 * (4 * q * q + 3 * q) + 3) with (3 + (4*q*q+3*q) * 4) by nia. 
+    by rewrite Nat.mod_add.
+  - rewrite H2 in Hn.
+    set (q := n / 4) in *.
+    replace (n*n+n+1) with (4*(4*q*q + 5*q + 1) + 3) by nia.
+    replace (4 * (4 * q * q + 5 * q + 1) + 3)
+     with (3 + (4*q*q+5*q+1) * 4) by nia.
+    by rewrite Nat.mod_add.
+Qed.
+
+Lemma mod4' :  forall p:nat, Nat.modulo p 4 = 3 -> Nat.modulo (p+1) 4 = 0.
+Proof.
+intros p H.
+  rewrite Nat.add_mod; [|lia].
+  rewrite H /=.
+  reflexivity.
+Qed.
+
+Lemma sum_lemma : forall m:nat, Nat.modulo (m+1) 4 = 0 -> \sum_(i<(m.+1/4)) 4 = (m+1).
+Proof.
+move=> m H.
+  rewrite sum_nat_const card_ord mulnC.
+
 Admitted.
+
 
 (* Theorem 3.1.2 (Lagrange’s four square theorem). *)
 
@@ -258,3 +288,16 @@ Qed.
 
 
 End s3_1_6.
+
+Section s4_1.
+
+Theorem thm_4_1 : 
+forall n:nat, (exists a:nat, exists b:nat, exists c:nat, (c<>0)%nat /\ (n*c*c = a*a+b*b)%nat) -> 
+  exists x, exists y:nat, (n= x*x+y*y)%nat.
+Proof.
+Admitted.
+
+
+
+End s4_1.
+
