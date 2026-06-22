@@ -1,7 +1,8 @@
 From Coqtail Require Import Arith.Lagrange_four_square.
 
 From HB Require Import structures.
-From mathcomp Require Import all_ssreflect perm fingroup all_algebra ssrZ.
+From mathcomp Require Import all_ssreflect perm fingroup all_algebra.
+From mathcomp.zify Require Import ssrZ.
 Import GRing.Theory.
 
 From PG2X Require Import incid_mats.
